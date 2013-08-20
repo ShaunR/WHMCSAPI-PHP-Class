@@ -11,23 +11,28 @@ EXAMPLE
 <?PHP
 require_once('./whmcsapi.class.php');
 
-$whmcsapi = new WHMCSAPI(
-        array(
-                'url' => 'https://localhost/whmcs/includes/api.php',
-                'username' => 'admin.user',
-                'password' => md5('admin.pass')
-        )
-);
+try {
+	$whmcsapi = new WHMCSAPI(
+		array(
+			'url' => 'https://localhost/whmcs/includes/api.php',
+			'username' => 'admin.user',
+			'password' => md5('admin.pass')
+		)
+	);
 
-$result = $whmcsapi->request(
-        array(
-                'action' => 'getclients'
-        )
-);
+	$result = $whmcsapi->request(
+		array(
+			'action' => 'getclients'
+		)
+	);
 
-if($result === false) die( $whmcsapi->getError() );
+	if($result === false) die( $whmcsapi->getError() );
 
-var_dump($result);
+	var_dump($result);
+} catch( Exception $e ) {
+	mail('root', 'Caught exception on ' . date('r'), "<pre>" . print_r($e, true) . "</pre>");
+	die('An exception was caught, a report of this exception has been sent to our staff for review');
+}
 ?>
 ```
 
