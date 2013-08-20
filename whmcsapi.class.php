@@ -53,7 +53,7 @@ class WHMCSAPI {
 		if(!array_key_exists('action', $params)) throw new Exception('action param is required to use this method');
 
 		$params['username'] = $this->username;
-		$params['password'] = md5($this->password);
+		$params['password'] = $this->password;
 		$params['responsetype'] = 'json';
 
 		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $params);

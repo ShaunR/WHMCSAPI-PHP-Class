@@ -15,7 +15,7 @@ $whmcsapi = new WHMCSAPI(
         array(
                 'url' => 'https://localhost/whmcs/includes/api.php',
                 'username' => 'admin.user',
-                'password' => 'admin.pass'
+                'password' => md5('admin.pass')
         )
 );
 
