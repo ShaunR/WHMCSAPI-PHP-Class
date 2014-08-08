@@ -2,7 +2,7 @@
 
 class WHMCSAPI {
 
-	const VERSION = '0.02';
+	const VERSION = '1.0.2';
 
 	private $curl = false;
 
