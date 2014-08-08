@@ -76,7 +76,7 @@ class WHMCSAPI {
 		}
 		*/
 	
-		$response = @json_decode($curl_exec, true);
+		$response = @json_decode(@utf8_encode($curl_exec), true);
 		if(!is_array($response)) {
 			$this->error = 'Failed to decode JSON response, ' . json_last_error();
 			return false;
